@@ -214,7 +214,7 @@ function shhh(str) {
 function clearFog(str) {
     let res = "";
     for (let i = 0; i < str.length; i++) {
-        if (res.indexOf("fog") !== -1  || res.indexOf("Fog") !== -1 ) {
+        if (res.indexOf("fog") !== -1 || res.indexOf("Fog") !== -1) {
             res += str[i];
         } else {
             res = "It's a clear day!"
@@ -226,3 +226,55 @@ function clearFog(str) {
 // console.log(clearFog("sky")); // "It's a clear day!"
 // console.log(clearFog("fogfogFFfoooofftogffreogffesGgfOogfog")); // "trees"
 // console.log(clearFog("fogFogFogffoObirdsanffodthebffoeffoesGGGfOgFog")); // "birdsandthebees"
+
+
+// 49 => Vowel Sandwich
+// Create a function which validates whether a 3 character string is a vowel sandwich. In order to have a valid sandwich, the string must satisfy the following rules:
+
+// The first and last characters must be a consonant.
+// The character in the middle must be a vowel.
+
+function sVowelSandwich(str) {
+    let vowels = "aioue";
+    if (vowels.indexOf(str[0]) === -1 && vowels.indexOf(str[str.length - 1]) === -1) {
+        return true
+    } else {
+        return false
+    }
+}
+
+// console.log(sVowelSandwich("cat")); // true
+// console.log(sVowelSandwich("ear")); // false
+// console.log(sVowelSandwich("bake")); // false
+// console.log(sVowelSandwich("try")); // false
+
+// 50 => Back to Home?
+// Mubashir has started his journey from home. Given a string of directions (N=North, W=West, S=South, E=East), he will walk for one minute in each direction. Determine whether a set of directions will lead him back to the starting position or not.
+
+function backToHome(directions) {
+    let North = 0;
+    let South = 0;
+    let East = 0;
+    let West = 0;
+
+    for (let direction of directions) {
+
+        if (direction === "N") {
+            North++;
+        } else if (direction === "S") {
+            South++;
+        } else if (direction === "E") {
+            East++;
+        } else if (direction === "W") {
+            West++;
+        }
+    }
+    return North === South && East === West;
+}
+
+// console.log(backToHome("EEWE")); // false
+// console.log(backToHome("NENESSWW")); // true
+// console.log(backToHome("NEESSW")); // false
+
+
+
