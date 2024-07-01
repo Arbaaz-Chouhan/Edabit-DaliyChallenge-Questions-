@@ -458,27 +458,47 @@ function firstBeforeSecond(str, first, second) {
     str = str.toLowerCase();
     first = first.toLowerCase();
     second = second.toLowerCase();
-    
+
     let firstMaxIndex = -1;
     let secondMinIndex = str.length;
 
-    
+
     for (let i = 0; i < str.length; i++) {
         if (str[i] === first) {
-            firstMaxIndex = i; 
+            firstMaxIndex = i;
         }
         if (str[i] === second && secondMinIndex === str.length) {
-            secondMinIndex = i; 
+            secondMinIndex = i;
         }
     }
 
     return firstMaxIndex < secondMinIndex;
 }
 
-// console.log(firstBeforeSecond("a rabbit jumps joyfully", "a", "j")); // ➞ true
-// console.log(firstBeforeSecond("knaves knew about waterfalls", "k", "w")); // ➞ true
-// console.log(firstBeforeSecond("happy birthday", "a", "y")); // ➞ false
-// console.log(firstBeforeSecond("precarious kangaroos", "k", "a")); // ➞ false
+// console.log(firstBeforeSecond("a rabbit jumps joyfully", "a", "j"));  // true
+// console.log(firstBeforeSecond("knaves knew about waterfalls", "k", "w"));  // true
+// console.log(firstBeforeSecond("happy birthday", "a", "y"));  // false
+// console.log(firstBeforeSecond("precarious kangaroos", "k", "a"));  // false
 
 
-// 80 => 
+// 80 =>  Check if the String is a Palindrome
+// A palindrome is a word, phrase, number or other sequence of characters which reads the same backward or forward, such as madam or kayak.
+
+// Write a function that takes a string and determines whether it's a palindrome or not. The function should return a boolean (true or false value).
+
+function isPalindrome(str) {
+let words =  str.toLowerCase();
+
+    for (let i = 0; i <words.length; i++) {
+        if (words[0] !== words[words.length-1]) {
+            return false
+        }
+
+    }
+    return true
+
+}
+
+// console.log(isPalindrome("Neuquen")); // true
+// console.log(isPalindrome("Not a palindrome")); // false
+// console.log(isPalindrome("A man, a plan, a cat, a ham, a yak, a yam, a hat, a canal-Panama!")); // true
