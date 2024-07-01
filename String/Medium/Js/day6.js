@@ -325,6 +325,160 @@ function grabNumberSum(str) {
 
     return sum;
 }
-console.log(grabNumberSum("aeiou250abc10")); // 260
-console.log(grabNumberSum("one1two2twenty20")); // 23
-console.log(grabNumberSum("900uwu50uwuuwuuwu25uwu25")); // 1000
+// console.log(grabNumberSum("aeiou250abc10")); // 260
+// console.log(grabNumberSum("one1two2twenty20")); // 23
+// console.log(grabNumberSum("900uwu50uwuuwuuwu25uwu25")); // 1000
+
+
+// 74 => First N Vowels
+// Write a function that returns the first n vowels of a string.
+
+function firstNVowels(str, n) {
+    let res = "";
+    let vowels = "aioue";
+    let count = 0;
+    for (let i = 0; i < str.length; i++) {
+        if (vowels.includes(str[i])) {
+            res += str[i];
+            count++;
+
+            if (count === n) {
+                break;
+            }
+        }
+    }
+    return count === n ? res : "invalid"
+}
+
+// console.log(firstNVowels("sharpening skills", 3)); // "aei"
+// console.log(firstNVowels("major league", 5)); // "aoeau"
+// console.log(firstNVowels("hostess", 5)); // "invalid"
+
+
+
+// 75  => Longest Sequence of Consecutive Zeroes
+// Write a function that returns the longest sequence of consecutive zeroes in a binary string.
+
+function longestZero(numStr) {
+    let res = "";
+
+    for (let i = 0; i < numStr.length; i++) {
+        if (numStr[i - 1] !== numStr[i + 1]) {
+            res += numStr[i];
+        }
+    }
+
+    return res
+}
+function longestZero(numStr) {
+
+    const matches = numStr.match(/0+/g);
+    if (!matches) return '';
+
+
+    let longest = matches[0];
+    for (let match of matches) {
+        if (match.length > longest.length) {
+            longest = match;
+        }
+    }
+
+
+    return longest;
+}
+
+
+// console.log(longestZero("01100001011000")); // "0000"
+// console.log(longestZero("100100100")); // "00"
+// console.log(longestZero("11111")); // ""
+
+// 76 =>  Harshad Numbers
+// A number n is a Harshad (also called Niven) number if it is divisible by the sum of its digits. For example, 666 is divisible by 6 + 6 + 6, so it is a Harshad number.
+
+// Write a function to determine whether the given number is a Harshad number.
+
+function isHarshad(num) {
+    let numStr = num.toString();
+    let sum = 0;
+    for (let i = 0; i < numStr.length; i++) {
+        sum += parseInt(numStr[i])
+    }
+    return num % sum === 0
+}
+
+function isHarshad(num) {
+    let sum = num.toString().split("").reduce((acc, digit) => acc + parseInt(digit), 0);
+    return num % sum === 0
+
+}
+
+
+// console.log(isHarshad(209)); // true
+// console.log(isHarshad(41)); // false
+// console.log(isHarshad(12255)); // true
+
+
+// 78 => Simple Encoder
+// Create a function that takes a string str and performs simple encoding as per the following method:
+
+// Replace all single occurrence characters with [
+// Replace all characters with two or more occurrences with ]
+// Return the final string after modification.
+
+function simpleEncoder(str) {
+    let res = "";
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] !== str[i + 1]) {
+            res += "["
+        } else if (str[i] === str[i + 1]) {
+            res += "]]"
+        } else if (str[i] === " ") {
+            res += "]"
+        }
+    }
+
+    return res
+}
+
+// console.log(simpleEncoder("Mubashir")); // "[[[[[[[["
+// // '[' for each character
+// console.log(simpleEncoder("Matt")); // "[[]]"
+// // ']' for both 't'
+// console.log(simpleEncoder("eD  aBiT")); // "[[]][[[["
+// // Two spaces in between
+
+
+// 79 =>  First Before Second Letter
+// You are given three inputs: a string, one letter, and a second letter.
+
+// Write a function that returns true if every instance of the first letter occurs before every instance of the second letter.
+
+function firstBeforeSecond(str, first, second) {
+    // Convert string to lowercase to handle case insensitivity
+    str = str.toLowerCase();
+    first = first.toLowerCase();
+    second = second.toLowerCase();
+    
+    let firstMaxIndex = -1;
+    let secondMinIndex = str.length;
+
+    
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === first) {
+            firstMaxIndex = i; 
+        }
+        if (str[i] === second && secondMinIndex === str.length) {
+            secondMinIndex = i; 
+        }
+    }
+
+    return firstMaxIndex < secondMinIndex;
+}
+
+// console.log(firstBeforeSecond("a rabbit jumps joyfully", "a", "j")); // ➞ true
+// console.log(firstBeforeSecond("knaves knew about waterfalls", "k", "w")); // ➞ true
+// console.log(firstBeforeSecond("happy birthday", "a", "y")); // ➞ false
+// console.log(firstBeforeSecond("precarious kangaroos", "k", "a")); // ➞ false
+
+
+// 80 => 
