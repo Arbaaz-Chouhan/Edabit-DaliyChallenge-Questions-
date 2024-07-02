@@ -183,20 +183,20 @@ function singleOccurrence(str) {
 // The final nest is "increinincrincredibleediblecredibledible" (depth = 3).
 
 // Given a starting word and the final word nest, return the depth of the word nest.
- 
+
 function wordNest(startWord, finalWord) {
     let depth = 0;
     let index = finalWord.indexOf(startWord);
 
     while (index !== -1) {
-    
+
         finalWord = finalWord.slice(0, index) + finalWord.slice(index + startWord.length);
         depth++;
-        
+
         index = finalWord.indexOf(startWord);
     }
 
-    return depth -1 
+    return depth - 1
 }
 
 // console.log(wordNest("floor", "floor")); // 0
@@ -207,15 +207,15 @@ function wordNest(startWord, finalWord) {
 // 88 => Abbreviating a Sentence
 // Create a function which takes a sentence and returns its abbreviation. Get all of the words over or equal to n characters in length and return the first letter of each, capitalised and overall returned as a single string.
 
-function abbreviate(str ,n=4){
-    let words =  str.split(" ");
+function abbreviate(str, n = 4) {
+    let words = str.split(" ");
     let res = "";
-        for(let i = 0; i<words.length; i++){
-            if(words[i].length >= n){
-                res += words[i][0].toUpperCase()
-            }
-            
-    
+    for (let i = 0; i < words.length; i++) {
+        if (words[i].length >= n) {
+            res += words[i][0].toUpperCase()
+        }
+
+
     }
 
     return res
@@ -228,3 +228,49 @@ function abbreviate(str ,n=4){
 // // Words below the default 4 characters are not included in the abbreviation.
 //  console.log(abbreviate("the acronym of long word lengths", 5)); // "AL"
 // // "acronym" and "lengths" have 5 or more characters.
+
+
+// 89 => Compounding Letters
+// Create a function that takes a string and returns a new string with each new character accumulating by +1. Separate each set with a dash.
+
+function accum(str) {
+    let res = [];
+    for (let i = 0; i < str.length; i++) {
+        res.push(str[i].toUpperCase() + str[i].repeat(i).toLowerCase());
+
+
+    }
+    return res.join("-")
+}
+
+// console.log(accum("abcd")); // "A-Bb-Ccc-Dddd"
+// console.log(accum("RqaEzty")); // "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+// console.log(accum("cwAt")); // "C-Ww-Aaa-Tttt"
+
+
+// 90 => Numbers to Objects
+// Mubashir needs your help in a simple task.
+
+// Given an array of numbers arr:
+
+// Create an object for each given number.
+// The object key will be the number converted to a string.
+// The value will be the corresponding character code converted to a string (check ASCII table).
+// Return an array of the resulting objects.
+
+function numObj(arr) {
+    let res = [];
+    for (let i = 0; i < arr.length; i++) {
+        let number = arr[i];
+        let AscllCode = String.fromCharCode(arr[i]);
+        let obj = {};
+        obj[number] = AscllCode;
+        res.push(obj)
+    }
+
+    return res
+}
+
+// console.log(numObj([118, 117, 120])); // [{'118':'v'}, {'117':'u'}, {'120':'x'}]
+// console.log(numObj([101, 121, 110, 113, 103])); // [{'101':'e'}, {'121':'y'}, {'110':'n'}, {'113':'q'}, {'103':'g'}]
+// console.log(numObj([118, 103, 110])); // [{"118":"v"}, {"103":"g"}, {"110":"n"}]
