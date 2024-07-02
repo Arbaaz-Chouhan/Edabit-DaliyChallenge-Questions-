@@ -252,7 +252,7 @@ function stringCycling(str1, str2) {
     let res = "";
 
     for (let i = 0; i < str2.length; i++) {
-        res += str1[i% str1.length] ;
+        res += str1[i % str1.length];
     }
 
     return res

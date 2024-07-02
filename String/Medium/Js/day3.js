@@ -219,8 +219,8 @@ function dashed(str) {
     for (let i = 0; i < str.length; i++) {
         res.push(str[i]);
     }
-   
-    
+
+
     return res.join("-");
 }
 

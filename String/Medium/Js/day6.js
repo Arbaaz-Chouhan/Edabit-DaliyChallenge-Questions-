@@ -487,10 +487,10 @@ function firstBeforeSecond(str, first, second) {
 // Write a function that takes a string and determines whether it's a palindrome or not. The function should return a boolean (true or false value).
 
 function isPalindrome(str) {
-let words =  str.toLowerCase();
+    let words = str.toLowerCase();
 
-    for (let i = 0; i <words.length; i++) {
-        if (words[0] !== words[words.length-1]) {
+    for (let i = 0; i < words.length; i++) {
+        if (words[0] !== words[words.length - 1]) {
             return false
         }
 
