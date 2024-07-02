@@ -132,8 +132,139 @@ function convertDate(str) {
     return res
 }
 
-console.log(convertDate("January 9, 2019")); // [1, 9, 2019]
-console.log(convertDate("Jan 9, 2019")); // [1, 9, 2019]
-console.log(convertDate("01/09/2019")); // [1, 9, 2019]
-console.log(convertDate("01-09-2019")); // [1, 9, 2019]
-console.log(convertDate("01.09.2019")); // [1, 9, 2019]
+// console.log(convertDate("January 9, 2019")); // [1, 9, 2019]
+// console.log(convertDate("Jan 9, 2019")); // [1, 9, 2019]
+// console.log(convertDate("01/09/2019")); // [1, 9, 2019]
+// console.log(convertDate("01-09-2019")); // [1, 9, 2019]
+// console.log(convertDate("01.09.2019")); // [1, 9, 2019]
+
+
+// 95 =>  Longest Word
+// Write a function that finds the longest word in a sentence and returns it. If two or more words are the biggest, return the word closest to the start of the sentence. Characters such as apostrophe, commas, periods, etc count as letters (e.g. O'Connor is 8 characters long).
+function longestWord(str) {
+    let words = str.split(" ");
+    let longest = "";
+
+    for (let word of words) {
+        if (word.length > longest.length) {
+            longest = word;
+        }
+    }
+
+    return longest;
+}
+
+
+// console.log(longestWord("Hello darkness my old friend")); // "darkness"
+// console.log(longestWord("Hello there mate")); // "Hello"
+// console.log(longestWord("Kayla's toy is plastic")); // "Kayla's"
+
+
+// 96 => Box Completely Filled?
+// Create a function that checks if the box is completely filled with the asterisk symbol *.
+
+function completelyFilled(arr) {
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i - 1] === arr[i + 1]) {
+            return true
+        }
+
+    }
+    return false
+}
+
+// console.log(completelyFilled([
+//   "#####",
+//   "#***#",
+//   "#***#",
+//   "#***#",
+//   "#####"
+// ])); // true
+
+// console.log(completelyFilled([
+//   "#####",
+//   "#* *#",
+//   "#***#",
+//   "#***#",
+//   "#####"
+// ])); // false
+
+// console.log(completelyFilled([
+//   "###",
+//   "#*#",
+//   "###"
+// ])); // true
+
+// console.log(completelyFilled([
+//   "##",
+//   "##"
+// ])); // true
+
+
+// 97 => Recursion: String Palindromes
+// Write a function that recursively determines if a string is a palindrome.
+
+function isPalindrome(str) {
+
+    if (str.length <= 1) return true;
+
+    if (str[0] !== str[str.length - 1]) {
+        return false
+    }
+
+    return isPalindrome(str.slice(1, str.length - 1));
+}
+
+
+// console.log(isPalindrome("abcba")); // true
+// console.log(isPalindrome("b")); // true
+// console.log(isPalindrome("")); // true
+// console.log(isPalindrome("ad")); // false
+
+
+// 98 => Count the Towers
+// Create a function that counts the number of towers.
+
+function count_towers(towers) {
+ 
+    return (String(towers[towers.length - 1]).match(/##/g) || []).length;
+}
+
+// console.log(count_towers([
+//     ["     ##         "],
+//     ["##   ##        ##"],
+//     ["##   ##   ##   ##"],
+//     ["##   ##   ##   ##"]
+// ])); // 4
+
+// console.log(count_towers([
+//     ["                         ##"],
+//     ["##             ##   ##   ##"],
+//     ["##        ##   ##   ##   ##"],
+//     ["##   ##   ##   ##   ##   ##"]
+// ])); // 6
+
+// console.log(count_towers([
+//     ["##"],
+//     ["##"]
+// ])); // 1
+
+
+// 99 => In the Centre?
+// Given a string containing mostly spaces and one non-space character, return whether the character is positioned in the very centre of the string. This means the number of spaces on both sides should be the same.
+
+function isCentral(str){
+let trimmed = str.trim();
+if(trimmed.length !== 1){
+    return false
+
+}
+let index = str.indexOf(trimmed);
+return index === str.length-index -1
+
+ }
+
+console.log(isCentral("  #  ")); // true
+console.log(isCentral(" 2    ")); // false
+console.log(isCentral("@")); // true
