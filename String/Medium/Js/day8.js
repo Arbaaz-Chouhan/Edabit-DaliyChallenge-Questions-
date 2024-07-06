@@ -265,6 +265,37 @@ return index === str.length-index -1
 
  }
 
-console.log(isCentral("  #  ")); // true
-console.log(isCentral(" 2    ")); // false
-console.log(isCentral("@")); // true
+// console.log(isCentral("  #  ")); // true
+// console.log(isCentral(" 2    ")); // false
+// console.log(isCentral("@")); // true
+
+
+// 100 =>  First N Mid
+// Create a function that takes a string and returns the first character of every word if the length of the word is even and the middle character if the length of the word is odd.
+
+function stmid(str) {
+    let words = str.split(" ");
+    let res = "";
+    
+    for (let i = 0; i < words.length; i++) {
+        let word = words[i];
+        let len = word.length;
+
+        if (len % 2 === 0) {
+            
+            res += word[0];
+        } else {
+            let midIndex = Math.floor(len / 2);
+            res += word[midIndex];
+        }
+    }
+
+    return res;
+}
+
+
+// console.log(stmid("Alexa have to paid")); // "ehtp"
+// // "e" is the middle character of "Alexa"
+// // "h" is the first character of "have"
+// console.log(stmid("Th3 0n3 4nd 0n1y")); // "hnn0"
+// console.log(stmid("who is the winner")); // "hihw"
