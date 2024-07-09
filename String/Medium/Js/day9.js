@@ -233,3 +233,165 @@ function countVowels(str) {
 // console.log(countVowels("cheesecake")); // 5
 // console.log(countVowels("bbb")); // 0
 // console.log(countVowels("")); // 0
+
+
+// 111 => Back and Forth
+// In a board game, a player may pick up a card with several left or right facing arrows, with the number of arrows indicating the number of tiles to move. The player should move either left or right, depending on the arrow's direction.
+
+// Given an array of the arrows contained on a player's cards, return a singular string of arrowheads that are equivalent to all of the arrowheads.
+
+// Worked Example
+//   console.log(calculateArrowhead([">>", "<<", "<<<"])); // "<<<"
+// >> means to move 2 places right
+// << means to move 2 places left (cancelling out >>)
+// <<< means to move a further 3 places left
+// overall, the movement can be written as <<<
+
+function calculateArrowhead(arr) {
+    let left = 0;
+    let right = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        for (let char of arr[i]) {
+            if (char === '>') {
+                right++;
+            } else if (char === '<') {
+                left++;
+            }
+        }
+    }
+
+    if (right > left) {
+        return '>'.repeat(right - left);
+    } else if (left > right) {
+        return '<'.repeat(left - right);
+    } else {
+        return '';
+    }
+}
+
+// console.log(calculateArrowhead([">>>>", "<", "<", "<"])); // ">"
+// console.log(calculateArrowhead([">", "<", ">>", "<", "<<<"])); // "<<"
+// console.log(calculateArrowhead([">>>", "<<<"])); // ""
+
+
+// 112 => Stretched Words
+// Write a function that takes a string, and returns a new string with any duplicate consecutive letters removed.
+
+function unstretch(str) {
+    let res = "";
+    for (let i = 0; i < str.length; i++) {
+        if (res.indexOf(str[i]) === -1) {
+            res += str[i];
+        }
+    }
+
+    return res
+}
+
+// console.log(unstretch("ppoeemm")); // "poem"
+// console.log(unstretch("wiiiinnnnd")); // "wind"
+// console.log(unstretch("ttiiitllleeee")); // "title"
+// console.log(unstretch("cccccaaarrrbbonnnnn")); // "carbon"
+
+// 113 => Replace Letters With Position In Alphabet
+// Create a function that takes a string and replaces each letter with its appropriate position in the alphabet. "a" is 1, "b" is 2, "c" is 3, etc, etc.
+
+function alphabetIndex(str) {
+
+    let alphabet = {
+        "a": "1",
+        "b": "2",
+        "c": "3",
+        "d": "4",
+        "e": "5",
+        "f": "6",
+        "g": "7",
+        "h": "8",
+        "i": "9",
+        "j": "10",
+        "k": "11",
+        "u": "21",
+        "v": "22",
+        "w": "23",
+        "l": "12",
+        "m": "13",
+        "n": "14",
+        "o": "15",
+        "p": "16",
+        "q": "17",
+        "r": "18",
+        "s": "19",
+        "t": "20",
+        "x": "24",
+        "y": "25",
+        "z": "26",
+    }
+    let res = [];
+
+    for (let char of str.toLowerCase()) {
+        if (alphabet[char]) {
+            res.push(alphabet[char])
+        }
+    }
+    return res.join(" ")
+}
+
+// console.log(alphabetIndex("Wow, does that work?")); // "23 15 23 4 15 5 19 20 8 1 20 23 15 18 11"
+// console.log(alphabetIndex("The river stole the gods.")); // "20 8 5 18 9 22 5 18 19 20 15 12 5 20 8 5 7 15 4 19"
+// console.log(alphabetIndex("We have a lot of rain in June.")); // "23 5 8 1 22 5 1 12 15 20 15 6 18 1 9 14 9 14 10 21 14 5"
+
+
+// 114 => ASCII Charts (Part 1: Progress Bar)
+// Given a character and a value between 0 and 100, return a string that represents a simple progress bar.
+
+// The value represents a percentage.
+// The bar should begin and end with "|"
+// Repeat the character to fill the bar, with each character equivalent to 10%
+// Use spaces to pad the bar to a length of 10 characters.
+// A single space comes after the bar, then a message with the % of completion (e.g. "Progress: 60%")
+// If the value is 100, the message should be "Completed!".
+
+function progressBar(bar, progress) {
+    let value = Math.floor(progress / 10);
+    let char = bar.repeat(value);
+    let res = `|${char} | Progress : ${progress}%`;
+    if (progress === 100) {
+        return ` |${char} | Completed!`
+    }
+
+    return res
+}
+
+// console.log(progressBar("#", 0)); // "|          | Progress: 0%"
+// console.log(progressBar("=", 40)); // "|====      | Progress: 40%"
+// console.log(progressBar("#", 60)); // "|######    | Progress: 60%"
+// console.log(progressBar(">", 100)); // "|>>>>>>>>>>| Completed!"
+
+
+// 115 => Count the Number of Duplicate Characters
+// Create a function that returns the amount of duplicate characters in a string. It will be case sensitive and spaces are included. If there are no  duplicates, return 0.
+
+function duplicates(str) {
+    let count = 0;
+    let res = "";
+    for (let i = 0; i < str.length; i++) {
+        if (res.indexOf(str[i]) === -1) {
+            res += str[i];
+        }
+        else {
+            count++;
+        }
+    }
+
+    return count
+} 
+
+// console.log(duplicates("Hello World!")); // ➞ 3
+// // "o" = 2, "l" = 3.
+// // "o" is duplicated 1 extra time and "l" is duplicated 2 extra times.
+// // Hence 1 + 2 = 3
+// console.log(duplicates("foobar")); // ➞ 1
+// console.log(duplicates("helicopter"));  // ➞ 1
+// console.log(duplicates("birthday")); // ➞ 0
+// // If there are no  duplicates, return 0
