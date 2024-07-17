@@ -33,9 +33,9 @@ function simpleTimer(time) {
         return "00:00:00"
     } else if (time === 59) {
         return "00:00:59"
-    }else if(time === 60){
+    } else if (time === 60) {
         return "00:01:00"
-    }else if(time === 3599){
+    } else if (time === 3599) {
         return "00:59:59"
     }
 }
@@ -48,13 +48,77 @@ function simpleTimer(time) {
 // 123 => Function to Arrow Function
 // Create a function that takes an empty function as a string and returns the function as a arrow function.
 
-function toArrowFunction(funStr){
-let words =  funStr.split(" ");
+function toArrowFunction(funStr) {
+    let words = funStr.split(" ");
 
     let functionName = words[1];
-return functionName
+
+    let paramsStartIndex = funStr.indexOf("(");
+    let paramsEndIndex = funStr.indexOf(")");
+    let params = funStr.substring(paramsStartIndex + 1, paramsEndIndex);
+
+    // Construct the arrow function string
+    return `const ${functionName} = (${params}) => {}`;
 }
 
-console.log(toArrowFunction("function test(a) {}"));  //   "const test = (a) =>"
-console.log(toArrowFunction("function twoArgs(a,b) {}"));  //  "const twoArgs = (a,b) =>"
-console.log(toArrowFunction("function restArgs(...a) {}"));  //   "const restArgs = (...a) =>"
+// console.log(toArrowFunction("function test(a) {}"));  //   "const test = (a) =>"
+// console.log(toArrowFunction("function twoArgs(a,b) {}"));  //  "const twoArgs = (a,b) =>"
+// console.log(toArrowFunction("function restArgs(...a) {}"));  //   "const restArgs = (...a) =>"
+
+
+// 124 => Height of the Tallest Building
+// Given an array of strings (depicting a skyline of several buildings), return in meters the height of the tallest building. Each line in the list represents 20m.
+
+
+function tallestBuildingHeight(arr) {
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].includes("#")) {
+            count++;
+        }
+    }
+    return `${count * 20}m`
+}
+
+console.log(tallestBuildingHeight([
+    "            ##",
+    "            ##",
+    "            ##",
+    "###   ###   ##",
+    "###   ###   ###",
+    "###   ###   ###",
+    "###   ###   ###"
+])); // ➞ "140m"
+
+// Tallest building is 7 rows
+// 7 x 20m = 140m
+
+console.log(tallestBuildingHeight([
+    "               ",
+    "               ",
+    "               ",
+    "       #    ###",
+    "      # #   ###",
+    "###   ###   ###",
+    "###   ###   ###"
+])); // ➞ "80m"
+
+// tallest building is 4 rows
+// 4 x 20m = 80m
+
+console.log(tallestBuildingHeight([
+    "                              ",
+    "                         ###  ",
+    "                         ###  ",
+    "###                    #####  ",
+    "###      #             #####  ",
+    "###     ###            #####  ",
+    "######  ###            #######",
+    "######  ######  ###    #######",
+    "###################    #######",
+    "###############################",
+    "###############################"
+])); // ➞ "200m"
+
+// Tallest building is 10 rows
+// 10 x 20m = 200m
