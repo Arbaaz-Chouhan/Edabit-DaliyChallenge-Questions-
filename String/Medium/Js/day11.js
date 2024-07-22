@@ -273,7 +273,7 @@ function alphanumericRestriction(str) {
 
 
 
-console.log(alphanumericRestriction("Bold")); // true
-console.log(alphanumericRestriction("123454321")); // true
-console.log(alphanumericRestriction("H3LL0")); // false
-console.log(alphanumericRestriction("ed@bit")); // false
+// console.log(alphanumericRestriction("Bold")); // true
+// console.log(alphanumericRestriction("123454321")); // true
+// console.log(alphanumericRestriction("H3LL0")); // false
+// console.log(alphanumericRestriction("ed@bit")); // false
