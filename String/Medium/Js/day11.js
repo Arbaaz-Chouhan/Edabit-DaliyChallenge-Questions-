@@ -259,7 +259,7 @@ function alphanumericRestriction(str) {
         } else if (char >= '0' && char <= '9') {
             hasNumber = true;
         } else {
-        
+
             return false;
         }
 
@@ -277,3 +277,5 @@ function alphanumericRestriction(str) {
 // console.log(alphanumericRestriction("123454321")); // true
 // console.log(alphanumericRestriction("H3LL0")); // false
 // console.log(alphanumericRestriction("ed@bit")); // false
+
+
