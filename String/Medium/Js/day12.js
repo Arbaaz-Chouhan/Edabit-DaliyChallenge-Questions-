@@ -26,7 +26,3 @@ function replace(str1, str2) {
 // console.log(replace("microscopic", "i-i")); // "m#croscop#c"
 // console.log(replace("", "a-z")); // ""
 
-
-let arr = {a:"1" ,b:"2"}
-let {a:firstvalue,b} =arr;
-console.log(firstvalue);
