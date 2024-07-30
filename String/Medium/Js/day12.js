@@ -49,10 +49,68 @@ function countOnes(arr) {
     return count;
   }
   
-//   console.log(countOnes([1, 0, 0, 1, 1, 0, 1, 1, 1])); // ➞ 2
-//   console.log(countOnes([1, 0, 1, 0, 1, 0, 1, 0])); // ➞ 0
-//   console.log(countOnes([1, 1, 1, 1, 0, 0, 0, 0])); // ➞ 1
-//   console.log(countOnes([0, 0, 0])); // ➞ 0
+//   console.log(countOnes([1, 0, 0, 1, 1, 0, 1, 1, 1])); //  2
+//   console.log(countOnes([1, 0, 1, 0, 1, 0, 1, 0])); //  0
+//   console.log(countOnes([1, 1, 1, 1, 0, 0, 0, 0])); //  1
+//   console.log(countOnes([0, 0, 0])); //  0
   
 
-  
+// 133 =>  A Letter's Best Friend
+// Given a string, return if a given letter always appears immediately before another given letter.
+
+// Worked Example
+// bestFriend("he headed to the store", "h", "e")  true
+
+// All occurences of "h": ["he", "headed", "the"]
+// All occurences of "h" have an "e" after it.
+// Return true
+
+function bestFriend(str,a,b){
+
+  for(let i  = 0; i<str.length; i++){
+    if (str[i] === a) {
+      if (str[i + 1] !== b) {
+        return false;
+      }
+    }
+
+  }
+  return true
+}
+
+// console.log(bestFriend("he headed to the store", "h", "e")); //  true
+// console.log(bestFriend("i found an ounce with my hound", "o", "u")); //  true
+// console.log(bestFriend("we found your dynamite", "d", "y")); //  false
+
+
+// 134 => Letters Only
+// Check if the given string consists of only letters and spaces and if every letter is in lower case.
+
+function lettersOnly(str){
+  for(let i = 0; i<str.length; i++){
+    if(str[i] === str[i].toUpperCase()){
+      return false
+    } else {
+      return true
+    }    
+  }
+
+}
+
+// console.log(lettersOnly("JAVACRIPT")); // false
+// console.log(lettersOnly("javascript")); // true
+// console.log(lettersOnly("12321313")); // false
+// console.log(lettersOnly("i have spaces")); // true
+// console.log(lettersOnly("i have numbers(1-10)")); // false
+// console.log(lettersOnly("")); // false
+
+// 135 => Partially Hidden String
+// Create a function that takes a phrase and transforms each word using the following rules:
+
+// Keep first and last character the same.
+// Transform middle characters into a dash -.
+
+console.log(partiallyHide("skies were pretty")); // "s---s w--e p----y"
+console.log(partiallyHide("red is not my color")); // "r-d is n-t my c---r"
+console.log(partiallyHide("She rolled her eyes")); // "S-e r----d h-r e--s"
+console.log(partiallyHide("Harry went to fight the basilisk")); // "H---y w--t to f---t t-e b------k"
