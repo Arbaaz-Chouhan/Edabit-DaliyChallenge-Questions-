@@ -116,4 +116,4 @@ console.log(partiallyHide("She rolled her eyes")); // "S-e r----d h-r e--s"
 console.log(partiallyHide("Harry went to fight the basilisk")); // "H---y w--t to f---t t-e b------k"
 
 
-console.log("hello eveyone");
+
