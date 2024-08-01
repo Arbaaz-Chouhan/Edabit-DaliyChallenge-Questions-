@@ -114,3 +114,6 @@ console.log(partiallyHide("skies were pretty")); // "s---s w--e p----y"
 console.log(partiallyHide("red is not my color")); // "r-d is n-t my c---r"
 console.log(partiallyHide("She rolled her eyes")); // "S-e r----d h-r e--s"
 console.log(partiallyHide("Harry went to fight the basilisk")); // "H---y w--t to f---t t-e b------k"
+
+
+console.log("hello eveyone");
