@@ -2,23 +2,23 @@
 // Write a function that replaces all letters within a specified range with the hash symbol #.
 
 function replace(str1, str2) {
-    let res = "";
-    let startChar = str2.charAt(0);
-    let endChar = str2.charAt(2);
+  let res = "";
+  let startChar = str2.charAt(0);
+  let endChar = str2.charAt(2);
 
-    for (let i = 0; i < str1.length; i++) {
-        let prevChar = str1[i - 1];
-        let nextChar = str1[i + 1];
-        
-        if ((prevChar && prevChar >= startChar && prevChar <= endChar) || 
-            (nextChar && nextChar >= startChar && nextChar <= endChar)) {
-            res += "#";
-        } else {
-            res += str1[i];
-        }
+  for (let i = 0; i < str1.length; i++) {
+    let prevChar = str1[i - 1];
+    let nextChar = str1[i + 1];
+
+    if ((prevChar && prevChar >= startChar && prevChar <= endChar) ||
+      (nextChar && nextChar >= startChar && nextChar <= endChar)) {
+      res += "#";
+    } else {
+      res += str1[i];
     }
+  }
 
-    return res;
+  return res;
 }
 
 // console.log(replace("abcdef", "c-e")); // "ab###f"
@@ -27,33 +27,33 @@ function replace(str1, str2) {
 // console.log(replace("", "a-z")); // ""
 
 
- // 132 => Number of Two or More Consecutive Ones
+// 132 => Number of Two or More Consecutive Ones
 // Create a function that counts the number of blocks of two or more adjacent 1s in an array.
 
- 
+
 function countOnes(arr) {
-    let count = 0;
-    let consecutiveOnes = 0;
-  
-    for (let i = 0; i <= arr.length; i++) {
-      if (arr[i] === 1) {
-        consecutiveOnes++;
-      } else {
-        if (consecutiveOnes >= 2) {
-          count++;
-        }
-        consecutiveOnes = 0;
+  let count = 0;
+  let consecutiveOnes = 0;
+
+  for (let i = 0; i <= arr.length; i++) {
+    if (arr[i] === 1) {
+      consecutiveOnes++;
+    } else {
+      if (consecutiveOnes >= 2) {
+        count++;
       }
+      consecutiveOnes = 0;
     }
-  
-    return count;
   }
-  
+
+  return count;
+}
+
 //   console.log(countOnes([1, 0, 0, 1, 1, 0, 1, 1, 1])); //  2
 //   console.log(countOnes([1, 0, 1, 0, 1, 0, 1, 0])); //  0
 //   console.log(countOnes([1, 1, 1, 1, 0, 0, 0, 0])); //  1
 //   console.log(countOnes([0, 0, 0])); //  0
-  
+
 
 // 133 =>  A Letter's Best Friend
 // Given a string, return if a given letter always appears immediately before another given letter.
@@ -65,9 +65,9 @@ function countOnes(arr) {
 // All occurences of "h" have an "e" after it.
 // Return true
 
-function bestFriend(str,a,b){
+function bestFriend(str, a, b) {
 
-  for(let i  = 0; i<str.length; i++){
+  for (let i = 0; i < str.length; i++) {
     if (str[i] === a) {
       if (str[i + 1] !== b) {
         return false;
@@ -86,13 +86,13 @@ function bestFriend(str,a,b){
 // 134 => Letters Only
 // Check if the given string consists of only letters and spaces and if every letter is in lower case.
 
-function lettersOnly(str){
-  for(let i = 0; i<str.length; i++){
-    if(str[i] === str[i].toUpperCase()){
+function lettersOnly(str) {
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === str[i].toUpperCase()) {
       return false
     } else {
       return true
-    }    
+    }
   }
 
 }
@@ -110,10 +110,41 @@ function lettersOnly(str){
 // Keep first and last character the same.
 // Transform middle characters into a dash -.
 
-console.log(partiallyHide("skies were pretty")); // "s---s w--e p----y"
-console.log(partiallyHide("red is not my color")); // "r-d is n-t my c---r"
-console.log(partiallyHide("She rolled her eyes")); // "S-e r----d h-r e--s"
-console.log(partiallyHide("Harry went to fight the basilisk")); // "H---y w--t to f---t t-e b------k"
+function partiallyHide(str) {
+  let words = str.split(" ");
+  let res = "";
+  for (let i = 0; i < words.length; i++) {
+    res += words[i].slice(0, 1);
+    let letter = words[i].slice(1, -1);
 
+    for (let j = 0; j < letter.length; j++) {
+      res += "-"
+    }
+    res += words[i].slice(-1) + " ";
 
+  }
+  return res
+}
 
+// console.log(partiallyHide("skies were pretty")); // "s---s w--e p----y"
+// console.log(partiallyHide("red is not my color")); // "r-d is n-t my c---r"
+// console.log(partiallyHide("She rolled her eyes")); // "S-e r----d h-r e--s"
+// console.log(partiallyHide("Harry went to fight the basilisk")); // "H---y w--t to f---t t-e b------k"
+
+ 
+// 136 => Index Filtering
+// Create a function that takes two inputs: idx (an array of integers) and str (a string). The function should return another string with the letters of str at each index in idx in order.
+
+function indexFilter(idx, str) {
+  let result = '';
+  for (let i = 0; i < idx.length; i++) {
+      // If index is negative, adjust it to refer from the end of the string
+      let index = idx[i] < 0 ? str.length + idx[i] : idx[i];
+      result += str[index];
+  }
+  return result.toLowerCase();
+}
+
+// console.log(indexFilter([7, -1, 5, 1], "She is the love of my love")); // Output: "tesh"
+// console.log(indexFilter([4, -7, -13, -11, -2, 0], "Relax and stay calm to avoid failures")); // Output: "xavier"
+// console.log(indexFilter([9, -9, 2, 27, 36, 6, 5, 13, -1, 2, 0, 30, 2], "That's life, I've got you under my skin")); // Output: "frank sinatra"
