@@ -144,7 +144,48 @@ function indexFilter(idx, str) {
   }
   return result.toLowerCase();
 }
-
+ 
 // console.log(indexFilter([7, -1, 5, 1], "She is the love of my love")); // Output: "tesh"
 // console.log(indexFilter([4, -7, -13, -11, -2, 0], "Relax and stay calm to avoid failures")); // Output: "xavier"
 // console.log(indexFilter([9, -9, 2, 27, 36, 6, 5, 13, -1, 2, 0, 30, 2], "That's life, I've got you under my skin")); // Output: "frank sinatra"
+
+
+// 137 => Word Riddles
+// What does the word LFAND represent? It represents the word Finland, because F is in LAND!
+
+// Create a function which replicates this to create brand new original word riddles! For the purposes of this challenge, take the string of letters before the word "in", and insert it into the 2nd letter position of the word formed after the word "in".
+
+// See the examples below for further clarity :)
+
+function makeWordRiddle(word) {
+  const index = word.toLowerCase().indexOf("in");
+  const beforeIn = word.slice(0, index);
+  const afterIn = word.slice(index + 2);
+  const result = afterIn.charAt(0) + beforeIn + afterIn.slice(1);
+  return result.toUpperCase();
+}
+
+
+// console.log(makeWordRiddle("Finland"));  // LFAND
+// console.log(makeWordRiddle("dinner"));   // NDER
+// console.log(makeWordRiddle("tkinter"));  // TTKER
+// console.log(makeWordRiddle("STRINGS"));  // GSTRS
+
+
+// 138 =>  Remix the String
+// Create a function that takes both a string and an array of numbers as arguments. Rearrange the letters in the string to be in the order specified by the index numbers. Return the "remixed" string.
+
+function remix(str,arr){
+  let res = [];
+  for(let i = 0; i<arr.length; i++){
+    res[arr[i]] = str[i];
+  }
+
+  return res.join("")
+}
+
+
+// console.log(remix("abcd", [0, 3, 1, 2])); // "acdb"
+// // The string you'll be returning will have: "a" at index 0, "b" at index 3, "c" at index 1, "d" at index 2, because the order of those characters maps to their corresponding numbers in the index array.
+// console.log(remix("PlOt", [1, 3, 0, 2])); // "OPtl"
+// console.log(remix("computer", [0, 2, 1, 5, 3, 6, 7, 4])); // "cmourpte"
