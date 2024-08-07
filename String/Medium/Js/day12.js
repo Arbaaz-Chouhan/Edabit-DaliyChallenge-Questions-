@@ -131,20 +131,20 @@ function partiallyHide(str) {
 // console.log(partiallyHide("She rolled her eyes")); // "S-e r----d h-r e--s"
 // console.log(partiallyHide("Harry went to fight the basilisk")); // "H---y w--t to f---t t-e b------k"
 
- 
+
 // 136 => Index Filtering
 // Create a function that takes two inputs: idx (an array of integers) and str (a string). The function should return another string with the letters of str at each index in idx in order.
 
 function indexFilter(idx, str) {
   let result = '';
   for (let i = 0; i < idx.length; i++) {
-      // If index is negative, adjust it to refer from the end of the string
-      let index = idx[i] < 0 ? str.length + idx[i] : idx[i];
-      result += str[index];
+    // If index is negative, adjust it to refer from the end of the string
+    let index = idx[i] < 0 ? str.length + idx[i] : idx[i];
+    result += str[index];
   }
   return result.toLowerCase();
 }
- 
+
 // console.log(indexFilter([7, -1, 5, 1], "She is the love of my love")); // Output: "tesh"
 // console.log(indexFilter([4, -7, -13, -11, -2, 0], "Relax and stay calm to avoid failures")); // Output: "xavier"
 // console.log(indexFilter([9, -9, 2, 27, 36, 6, 5, 13, -1, 2, 0, 30, 2], "That's life, I've got you under my skin")); // Output: "frank sinatra"
@@ -175,9 +175,9 @@ function makeWordRiddle(word) {
 // 138 =>  Remix the String
 // Create a function that takes both a string and an array of numbers as arguments. Rearrange the letters in the string to be in the order specified by the index numbers. Return the "remixed" string.
 
-function remix(str,arr){
+function remix(str, arr) {
   let res = [];
-  for(let i = 0; i<arr.length; i++){
+  for (let i = 0; i < arr.length; i++) {
     res[arr[i]] = str[i];
   }
 
@@ -189,3 +189,5 @@ function remix(str,arr){
 // // The string you'll be returning will have: "a" at index 0, "b" at index 3, "c" at index 1, "d" at index 2, because the order of those characters maps to their corresponding numbers in the index array.
 // console.log(remix("PlOt", [1, 3, 0, 2])); // "OPtl"
 // console.log(remix("computer", [0, 2, 1, 5, 3, 6, 7, 4])); // "cmourpte"
+
+// 139 => 
