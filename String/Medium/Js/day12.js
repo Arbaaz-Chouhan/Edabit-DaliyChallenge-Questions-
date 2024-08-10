@@ -172,7 +172,7 @@ function makeWordRiddle(word) {
 // console.log(makeWordRiddle("STRINGS"));  // GSTRS
 
 
-// 138 =>  Remix the String
+// 138 =>  Remix the String(
 // Create a function that takes both a string and an array of numbers as arguments. Rearrange the letters in the string to be in the order specified by the index numbers. Return the "remixed" string.
 
 function remix(str, arr) {
@@ -190,6 +190,42 @@ function remix(str, arr) {
 // console.log(remix("PlOt", [1, 3, 0, 2])); // "OPtl"
 // console.log(remix("computer", [0, 2, 1, 5, 3, 6, 7, 4])); // "cmourpte"
 
-// 139 => 
+// 139 => Evaluating Factorials
+// Create a function that takes an array of factorial expressions and returns their sum.
+
+// Examples
+function evalFactorial(n){
+  if(n === 0 || n === 1){
+    return 1;
+  }else{
+    return n * evalFactorial(n-1)
+  }
+}
+
+// console.log(evalFactorial(["2!", "3!"])); // 8
+// console.log(evalFactorial(["5!", "4!", "2!"])); // 146
+// console.log(evalFactorial(["0!", "1!"])); // 2
+
+
+
+// 140 => Amazing Alliteration
+//Alliteration refers to a sequence of words that begin with the same letter. For this exercise, a sentence is correctly alliterated if all words strictly greater than 3 characters begin with the same letter.
+
+// function alliterationCorrect(str){
+//   for(let i = 0; i<str.length; i++){
+//     if(){}
+//   }
+// }
+
+// console.log(alliterationCorrect("She swam to the shore.")); // true
+// // All words >= 4 letters long begins with "s"
+
+// console.log(alliterationCorrect("Maybel manages money well.")); // false
+// // "well" does not begin with an "m"
+
+// console.log(alliterationCorrect("He helps harness happiness.")); // true
+
+// console.log(alliterationCorrect("There are many animals.")); // false
+
 
 
