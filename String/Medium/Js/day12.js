@@ -228,4 +228,3 @@ function evalFactorial(n){
 // console.log(alliterationCorrect("There are many animals.")); // false
 
 
-
