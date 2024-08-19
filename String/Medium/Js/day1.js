@@ -469,3 +469,25 @@ function firstPlace(str) {
 // console.log(firstPlace("e==B=Fe")); // "e"
 // console.log(firstPlace("proeNeoOJGnfl")); // "l"
 
+
+
+
+// function reverseAndNot(num) {
+//     const str = num.toString()
+//     const reverse = str.split("").reverse().join("")
+//     const merge = reverse + str
+//     return Number(merge);
+// }
+
+function reverseAndNot(num) {
+    const str = num.toString();
+    let reverse = "";
+    for (let i = str.length -1; i >= 0; i--) {
+        reverse += str[i]
+    }
+    return typeof parseInt(reverse + str);
+}
+
+console.log(reverseAndNot(123));  //➞ 321123
+console.log(reverseAndNot(152));  //➞ 251152
+console.log(reverseAndNot(123456789));  //➞ 987654321123456789
