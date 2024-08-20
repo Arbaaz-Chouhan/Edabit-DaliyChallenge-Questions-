@@ -34,17 +34,19 @@ function wordBuilder(arr1, arr2) {
 
 // ... Remember to return the result rounded to zero decimals.
 
-function findVertex(strNum) {
-    let res = [];
-    for (let i = 0; i < strNum.length; i++) {
+function findVertex(equation) {
+    equation = equation.replace(/\s+/g, ''); // Remove all spaces
+    
+    const a = parseFloat(equation.split('x^2')[0]);
+    const b = parseFloat(equation.split('x^2')[1].split('x')[0]);
+    
+    const vertexX = -b / (2 * a);
 
-        res.push(strNum)
-    }
-
-    return res
+    return Math.round(vertexX);
 }
 
-// console.log(findVertex("-5x + 50x -120")); // 5
-// console.log(findVertex("-6x + 36x -72")); // 3
-// console.log(findVertex("7x +14x +28")); // -1
+// console.log(findVertex("-5x^2 + 50x -120")); // 5
+// console.log(findVertex("-6x^2 + 36x -72")); // 3
+// console.log(findVertex("7x^2 + 14x + 28")); // -1
 
+// 143 => 
