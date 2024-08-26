@@ -36,10 +36,10 @@ function wordBuilder(arr1, arr2) {
 
 function findVertex(equation) {
     equation = equation.replace(/\s+/g, ''); // Remove all spaces
-    
+
     const a = parseFloat(equation.split('x^2')[0]);
     const b = parseFloat(equation.split('x^2')[1].split('x')[0]);
-    
+
     const vertexX = -b / (2 * a);
 
     return Math.round(vertexX);
@@ -49,4 +49,75 @@ function findVertex(equation) {
 // console.log(findVertex("-6x^2 + 36x -72")); // 3
 // console.log(findVertex("7x^2 + 14x + 28")); // -1
 
-// 143 => 
+// 143 =>  Is it a Valid Floating Numeric Character?
+// Create a regular expression to check whether the given string is a valid floating numeric character or not.
+
+function isFloatingCharacter(str) {
+    for (let i = 0; i < str.length; i++) {
+        if (str[i].includes(parseFloat(str[i]))) {
+            return true
+        } else {
+
+        }
+    }
+
+    return false
+}
+
+// console.log(isFloatingCharacter("12.12")); // true
+// console.log(isFloatingCharacter("12.")); // false
+// console.log(isFloatingCharacter(".1")); // true
+// console.log(isFloatingCharacter("-.1")); // true
+// console.log(isFloatingCharacter("abc")); // false
+
+
+// 144 => rder by Length First
+// Graded lexicographic order (grlex order for short) is a way of ordering words that:
+
+// First orders words by length.
+// Then orders words of the same size by their dictionary order.
+// For example, in grlex order:
+
+// "tray" < "trapped" since "tray" has length 4 while "trapped" has length 7.
+// "trap" < "tray" since both have length 4, but "trap" comes before "tray" in the dictionary.
+// Given an array of words, return that array in grlex order.
+
+function makeGrlex(arr) {
+    return arr.sort((a, b) => {
+        if (a.length !== b.length) {
+            return a.length - b.length;
+        }
+
+        return a.localeCompare(b);
+    });
+}
+// console.log(makeGrlex(["small", "big"])); // ["big", "small"]
+// console.log(makeGrlex(["cat", "ran", "for", "the", "rat"])); // ["cat", "for", "ran", "rat", "the"]
+// console.log(makeGrlex(["this", "is", "a", "small", "test"])); // ["a", "is", "test", "this", "small"]
+
+
+// 145 => Count Palindrome Numbers in a Range
+// Create a function that returns the number of palindrome numbers in a specified range (inclusive).
+
+// For example, between 8 and 34, there are 5 palindromes: 8, 9, 11, 22 and 33. Between 1550 and 1552 there is exactly one palindrome: 1551.
+
+function countPalindromes(start, end) {
+    let count = 0;
+
+    for (let i = start; i <= end; i++) {
+        if (isPalindrome(i)) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+function isPalindrome(num) {
+    let str = num.toString();
+    let reversedStr = str.split('').reverse().join('');
+    return str === reversedStr;
+}
+console.log(countPalindromes(1, 10)); // 9
+console.log(countPalindromes(555, 556)); // 1
+console.log(countPalindromes(878, 898)); // 3
