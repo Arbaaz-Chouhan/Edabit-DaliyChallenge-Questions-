@@ -118,6 +118,6 @@ function isPalindrome(num) {
     let reversedStr = str.split('').reverse().join('');
     return str === reversedStr;
 }
-console.log(countPalindromes(1, 10)); // 9
-console.log(countPalindromes(555, 556)); // 1
-console.log(countPalindromes(878, 898)); // 3
+// console.log(countPalindromes(1, 10)); // 9
+// console.log(countPalindromes(555, 556)); // 1
+// console.log(countPalindromes(878, 898)); // 3
