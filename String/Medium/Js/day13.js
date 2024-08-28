@@ -118,6 +118,194 @@ function isPalindrome(num) {
     let reversedStr = str.split('').reverse().join('');
     return str === reversedStr;
 }
+
 // console.log(countPalindromes(1, 10)); // 9
 // console.log(countPalindromes(555, 556)); // 1
 // console.log(countPalindromes(878, 898)); // 3
+
+// 146 => Construct and Deconstruct
+// Given a string, create a function which outputs an array, building and deconstructing the string letter by letter. See the examples below for some helpful guidance.
+
+function constructDeconstruct(str) {
+    let res = [];
+    let strres = "";
+    for (let i = 1; i <= str.length; i++) {
+        res.push(str.slice(0, i));
+    }
+
+    for (let j = str.length - 1; j >= 0; j--) {
+        res.push(str.slice(0, j))
+    }
+
+
+    return res
+}
+
+
+// console.log(constructDeconstruct("Hello")); // [
+//   "H",
+//   "He",
+//   "Hel",
+//   "Hell",
+//   "Hello",
+//   "Hell",
+//   "Hel",
+//   "He",
+//   "H"
+// ]
+
+// console.log(constructDeconstruct("edabit")); // [
+//   "e",
+//   "ed",
+//   "eda",
+//   "edab",
+//   "edabi",
+//   "edabit",
+//   "edabi",
+//   "edab",
+//   "eda",
+//   "ed",
+//   "e"
+// ]
+
+// console.log(constructDeconstruct("the sun")); // [
+//   "t",
+//   "th",
+//   "the",
+//   "the ",
+//   "the s",
+//   "the su",
+//   "the sun",
+//   "the su",
+//   "the s",
+//   "the ",
+//   "the",
+//   "th",
+//   "t"
+// ]
+
+
+// 146 => Count the Number of Duplicate Characters
+// Create a function that takes a string and returns the number of alphanumeric characters that occur more than once.
+
+function duplicateCount(str) {
+    let res = [];
+    let count = 0;
+
+    for (let i = 0; i < str.length; i++) {
+        if (res.indexOf(str[i]) === -1 && str.indexOf(str[i], i + 1) !== -1) {
+            res.push(str[i]);
+            count++;
+        }
+    }
+
+    return count;
+}
+
+// console.log(duplicateCount("abcde")); // 0
+// console.log(duplicateCount("aabbcde")); // 2
+// console.log(duplicateCount("Indivisibilities")); // 2
+// console.log(duplicateCount("Aa")); // 0
+
+
+//147 =>  Is the Sum of Letters Even or Odd?
+// Create a function that takes a string and returns true if the sum of the position of every letter in the alphabet is even and false if the sum is odd.
+
+function isAlpha(str) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    let sum = 0;
+
+    for (let char of str.toLowerCase()) {
+        let index = alphabet.indexOf(char) + 1;
+        if (index > 0) {
+            sum += index;
+        }
+    }
+
+    return sum % 2 === 0;
+}
+
+
+// console.log(isAlpha("i'am king") ); // true
+// // 9 + 1 + 13 + 11 + 9 + 14 + 7 = 64 (even)
+
+// console.log(isAlpha("True")); // true
+// // 20 + 18 + 21 + 5= 64 (even)
+
+// console.log(isAlpha("alexa")); // false
+// // 1 + 12 + 5 + 24 + 1= 43 (odd)
+
+// 148 => Find the Unique Letters
+// Create a function that takes a string and returns an array of the letters that occur only once.
+
+function findLetters(str) {
+    let res = [];
+
+    for (let i = 0; i < str.length; i++) {
+
+        if (res.indexOf(str[i]) === -1){
+            res.push(str[i]);
+        } 
+
+    }
+    return res
+}
+
+// console.log(findLetters("monopoly")); // ["m", "n", "p", "l", "y"]
+// console.log(findLetters("balloon"));  // ["b", "a", "n"]
+// console.log(findLetters("analysis")); // ["n", "l", "y", "i"]
+
+
+// 149 =>  Reverse Coding Challenge #1
+// This is a reverse coding challenge. Normally you're given explicit directions with how to create a function. Here, you must generate your own function to satisfy the relationship between the inputs and outputs.
+
+// Your task is to create a function that, when fed the inputs below, produce the sample outputs shown.
+
+function mysteryFunc(str) {
+
+	let res = "";
+
+    for(let i = 0; i<str.length; i++){
+   
+        if(isNaN(str[i]) === true){
+            var char  = str[i];
+        } 
+    else if(isNaN(str[i]) === false){
+       let repeatCount =  str[i];
+   
+       res += char.repeat(repeatCount);
+    } 
+   
+    
+    }
+
+    return res
+}
+
+// console.log(mysteryFunc("A4B5C2"));  // "AAAABBBBBCC"
+// console.log(mysteryFunc("C2F1E5"));  // "CCFEEEEE"
+// console.log(mysteryFunc("T4S2V2"));  // "TTTTSSVV"
+// console.log(mysteryFunc("A1B2C3D4"));  // "ABBCCCDDDD"
+
+
+//150 => Words that Start with a Vowel
+// Write a function that retrieves all words that begin with a vowel.
+
+function retrieve(str){
+    let words = str.toLowerCase().split(' ');
+    let vowel = "aioue";
+    let res = [];
+        for(let i = 0; i<words.length; i++){
+        let startVowel =  words[i].slice(0,1);
+        if(vowel.includes(startVowel)){
+            res.push(words[i]);
+        }
+    }
+
+    return res
+}
+
+// console.log(retrieve("A simple life is a happy life for me.")); // ["a", "is", "a"]
+// console.log(retrieve("Exercising is a healthy way to burn off energy.")); // ["exercising", "is", "a", "off", "energy"]
+// console.log(retrieve("The poor ostrich was ostracized.")); // ["ostrich", "ostracized"]
+// console.log(retrieve("")); // []
