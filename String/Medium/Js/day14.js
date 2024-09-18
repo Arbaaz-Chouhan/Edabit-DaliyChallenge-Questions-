@@ -92,8 +92,8 @@ function gimmeTheLetters(str) {
 
 function partition(str, num) {
     let res = [];
-    for (let i = 0; i < str.length; i+=  num) {
-    res.push(str.slice(i,i+num));
+    for (let i = 0; i < str.length; i += num) {
+        res.push(str.slice(i, i + num));
     }
 
     return res
@@ -140,9 +140,110 @@ function returnEndOfNumber(num) {
 // The 2nd of February 2020 is a palindromic date in both dd/mm/yyyy and mm/dd/yyyy format (02/02/2020). Given a date in dd/mm/yyyy format, return true if the date is palindromic in both date formats, otherwise return false.
 
 
-
+function isPalindrome(str) {
+    return str === str.split('').reverse().join('');
+  }
+  
+  function palindromicDate(date) {
+    const [day, month, year] = date.split('/');
+    
+    
+    const ddmmyyyy = `${day}${month}${year}`;
+    const mmddyyyy = `${month}${day}${year}`;
+    
+    return isPalindrome(ddmmyyyy) && isPalindrome(mmddyyyy);
+  }
+  
 console.log(palindromicDate("02/02/2020")); // true
 console.log(palindromicDate("11/12/2019")); // false
 console.log(palindromicDate("11/02/2011")); // false
 // Although 11/02/2011 is palindromic in dd/mm/yyyy format,
 // it isn't in mm/dd/yyyy format (02/11/2011)
+
+
+// 157 => Sort a String by Its Last Character
+// Create a function that takes a string of words and return a string sorted alphabetically by the last character of each word.
+ 
+function sortByLast(str){
+    let words = str.split(" ");
+words.sort((a,b) => {
+    return a.slice(-1).localeCompare(b.slice(-1));
+})
+
+return words.join(" ")
+}
+
+// console.log(sortByLast("herb camera dynamic")); // "camera herb dynamic"
+
+// console.log(sortByLast("stab traction artist approach")); // "stab approach traction artist"
+
+// console.log(sortByLast("sample partner autonomy swallow trend")); // "trend sample partner swallow autonomy"
+
+
+ // 158 => Cluster Vowels, Single Out Consonants
+// Write a function that takes in a word and splits the consonants one by one, but keeps the vowels in a cluster.
+
+function split(str){
+    
+let vowels =  'aioue';
+if(str === vowels){
+    return str.join("");
+}else{
+    return str.split("")
+}
+}
+
+// console.log(split("beautifully")); // ["b", "eau", "t", "i", "f", "u", "l", "l""y"]
+// console.log(split("spoonful")); // ["s", "p", "oo", "n", "f", "u", "l"]
+// console.log(split("swimming")); // ["s", "w", "i", "m", "m", "i", "n", "g"]
+
+
+// 159 => Missing Letters
+// Given a string containing unique letters, return a sorted string with the letters that don't appear in the string.
+
+function getMissingLetters(str){
+    let  res = "";
+    let atoz = "abcdefghijklmnopqrstuvwxyz";
+    for(let i = 0; i<atoz.length; i++){
+        if(!str.includes(atoz[i])){
+            res += atoz[i]
+        }
+    }
+
+    return res
+}
+
+// console.log(getMissingLetters("abcdefgpqrstuvwxyz")); // "hijklmno"
+// console.log(getMissingLetters("zyxwvutsrq")); // "abcdefghijklmnop"
+// console.log(getMissingLetters("abc")); // "defghijklmnopqrstuvwxyz"
+// console.log(getMissingLetters("abcdefghijklmnopqrstuvwxyz")); // ""
+
+
+// 160 => Find the First Non-Repeated Character
+// Create a function that accepts a string as an argument and returns the first non-repeated character.
+
+function firstNonRepeatedCharacter(str){
+   let charCount = []
+    for (let char of str) {
+        if (charCount[char]) {
+          charCount[char] += 1;
+        } else {
+          charCount[char] = 1;
+        }
+      }
+    
+      // Step 2: Find the first character with a count of 1
+      for (let char of str) {
+        if (charCount[char] === 1) {
+          return char;
+        }
+      }
+      return false
+}
+
+// console.log(firstNonRepeatedCharacter("g")); // "g"
+// console.log(firstNonRepeatedCharacter("it was then the frothy word met the round night")); // "a"
+// console.log(firstNonRepeatedCharacter("the quick brown fox jumps then quickly blows air")); // "f"
+// console.log(firstNonRepeatedCharacter("hheelloo")); // false
+// console.log(firstNonRepeatedCharacter("")); // false
+
