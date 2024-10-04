@@ -94,31 +94,103 @@ function toSnakeCase(str) {
 // console.log(toCamelCase("is_modal_open")); // "isModalOpen"
 // console.log(toSnakeCase("getColor")); // "get_color"
 
-// 164 => Substituting the The
-// Create a function that replaces "the" in the sentence with "an" or "a". Remember that if the next word begins with a vowel, use "an". In the case of a consonant, use "a".
 
-function replaceThe(str) {
-    let res = '';
-    const vowels = 'aeiou';
-    let words = str.split(" "); // Split the string into words
+
+// 165 => Christmas Tree
+// Write a function to create a Christmas tree based on height h.
+function tree(num) {
+    let res = []
+    if (num == 0) return res.push("");
+    for (let i = 0; i < num; i++) {
+        let str = " ";
+
+        for (let j = 0; j < 2 * i + 1; j++) {
+            str += '#';
+        }
+
+        res.push(str)
+    }
+    return res
+
+}
+
+// console.log(
+//     tree(1)); // [
+// //   "#"
+// // ]
+
+// console.log(
+//     tree(2)); // [
+// //   " # ",
+// //   "###"
+// // ]
+
+// console.log(
+//     tree(5)); // [
+// //   "    #    ",
+// //   "   ###   ",
+// //   "  #####  ",
+// //   " ####### ",
+// //   "#########"
+// // ]
+
+// console.log(
+//     tree(0)); // []
+
+ 
+
+// 166 =>  Spelling Bee
+// Given a sentence spelling out a word, return true if the spelled letters match the word at the end of the string, or false otherwise.
+
+function validateSpelling(str) {
+    let words = str.split('.').join('').trim().split(' ');
 
     for (let i = 0; i < words.length; i++) {
-        if (words[i] === "the") {
-            // Check if there's a next word
-            if (i + 1 < words.length) {
-                let nextWord = words[i + 1].toLowerCase(); // Get the next word
-                // Decide whether to use "an" or "a"
-                res += vowels.includes(nextWord.charAt(0)) ? "an " : "a ";
-            } else {
-                res += "the "; // Keep "the" if it's the last word
+        let word = words[i];
+        let expectedSpelling = '';
+
+        for (let j = 0; j < word.length; j++) {
+            let char = word[j];
+
+            if ((char >= 'A' && char <= 'Z') || (char >= 'a' && char <= 'z')) {
+                expectedSpelling += char;
             }
-        } else {
-            res += words[i] + " "; 
+        }
+
+
+        if (expectedSpelling.toUpperCase() !== word.toUpperCase()) {
+            return true;
         }
     }
 
-    return res.trim(); 
+    return false;
 }
-console.log(replaceThe("the dog and the envelope")); // "a dog and an envelope"
-console.log(replaceThe("the boy ran at the wall")); // "a boy ran at a wall"
-console.log(replaceThe("the egg, the spoon and the espionage")); // "an egg, a spoon and an espionage"
+
+console.log(
+ validateSpelling("C. Y. T. O. P. L. A. S. M. Cytoplasm?")); /// true
+console.log(
+ validateSpelling("P. H. A. R. A. O. H. Pharaoh!")); /// true
+console.log(
+ validateSpelling("H. A. N. K. E. R. C. H. E. I. F. Handkerchief.")); /// false
+
+
+
+// 167 => Case and Index Inverter
+// Write a function that takes a string input and returns the string in a reversed case and order.
+
+function invert(str){
+    let res = '';
+    let words = str.split(" ");
+    let strrev =  words.reverse();
+
+    for(let i = 0; i<strrev.length; i++){
+        res += " " + strrev[i].split('').reverse().join('');
+    }
+
+    return res
+}
+
+// console.log(invert("dLROW YM sI HsEt")); //  "TeSh iS my worlD"
+// console.log(invert("ytInIUgAsnOc")); //  "CoNSaGuiNiTY"
+// console.log(invert("step on NO PETS")); //  "step on NO PETS"
+// console.log(invert("XeLPMoC YTiReTXeD")); //  "dExtErIty cOmplEx"

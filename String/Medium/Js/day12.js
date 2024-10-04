@@ -202,9 +202,9 @@ function evalFactorial(n){
   }
 }
 
-// console.log(evalFactorial(["2!", "3!"])); // 8
-// console.log(evalFactorial(["5!", "4!", "2!"])); // 146
-// console.log(evalFactorial(["0!", "1!"])); // 2
+console.log(evalFactorial(["2!", "3!"])); // 8
+console.log(evalFactorial(["5!", "4!", "2!"])); // 146
+console.log(evalFactorial(["0!", "1!"])); // 2
 
 
 
@@ -218,7 +218,7 @@ function evalFactorial(n){
 // }
 
 // console.log(alliterationCorrect("She swam to the shore.")); // true
-// // All words >= 4 letters long begins with "s"
+// All words >= 4 letters long begins with "s"
 
 // console.log(alliterationCorrect("Maybel manages money well.")); // false
 // // "well" does not begin with an "m"
