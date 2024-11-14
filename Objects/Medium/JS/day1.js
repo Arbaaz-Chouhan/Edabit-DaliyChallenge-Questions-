@@ -646,6 +646,7 @@ function greeting(str) {
 
 }
 
-// console.log(greeting("Randy")); // "Hi! I'm Randy, and I'm from Germany."
-// console.log(greeting("Sam")); // "Hi! I'm Sam, and I'm from Argentina."
-// console.log(greeting("Monti")); // "Hi! I'm a guest.
+console.log(greeting("Randy")); // "Hi! I'm Randy, and I'm from Germany."
+console.log(greeting("Sam")); // "Hi! I'm Sam, and I'm from Argentina."
+console.log(greeting("Monti")); // "Hi! I'm a guest.
+
