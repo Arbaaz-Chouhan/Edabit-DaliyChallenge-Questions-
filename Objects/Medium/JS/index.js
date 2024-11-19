@@ -646,7 +646,175 @@ function greeting(str) {
 
 }
 
-console.log(greeting("Randy")); // "Hi! I'm Randy, and I'm from Germany."
-console.log(greeting("Sam")); // "Hi! I'm Sam, and I'm from Argentina."
-console.log(greeting("Monti")); // "Hi! I'm a guest.
+// console.log(greeting("Randy")); // "Hi! I'm Randy, and I'm from Germany."
+// console.log(greeting("Sam")); // "Hi! I'm Sam, and I'm from Argentina."
+// console.log(greeting("Monti")); // "Hi! I'm a guest.
 
+
+// 24 => Count Number of Instances
+// Create a class named User and create a way to check the number of users (number of instances) that were created, so that the value can be accessed as a class attribute.
+class User {
+    static userCount = 0; instances
+
+    constructor(username) {
+        this.username = username;
+        User.userCount++;
+    }
+}
+const u1 = new User("johnsmith10")
+// console.log(User.userCount);  // 1
+
+const u2 = new User("marysue1989")
+// console.log(User.userCount);  // 2
+
+const u3 = new User("milan_rodrick")
+// console.log(User.userCount); //  3
+
+// console.log(u1.username);   // "johnsmith10"
+// console.log(u2.username);  // "marysue1989"
+// console.log(u3.username);  //  "milan_rodrick"
+
+// 25 =>  Get Student Top Notes
+// Create a function that takes an array of students and returns an array of their top notes. If the student does not have notes then let's assume their top note is equal to 0.
+
+function getStudentTopNotes(students) {
+    let res = []; // Array to store the top notes
+
+    for (let i = 0; i < students.length; i++) {
+        let notes = students[i].notes; // Get the notes of the current student
+
+        if (notes.length > 0) {
+            // If there are notes, find the maximum
+            let topNote = notes[0];
+            for (let j = 1; j < notes.length; j++) {
+                if (notes[j] > topNote) {
+                    topNote = notes[j];
+                }
+            }
+            res.push(topNote);
+        } else {
+            // If there are no notes, push 0
+            res.push(0);
+        }
+    }
+
+    return res; // Return the array of top notes
+}
+
+
+
+// console.log(getStudentTopNotes([
+// {
+//     id: 1,
+//     name: "Jacek",
+//     notes: [5, 3, 4, 2, 5, 5]
+//   },
+//   {
+//     id: 2,
+//     name: "Ewa",
+//     notes: [2, 3, 3, 3, 2, 5]
+//   },
+//   {
+//     id: 3,
+//     name: "Zygmunt",
+//     notes: [2, 2, 4, 4, 3, 3]
+//   }
+// ])); //  [5, 5, 4]
+
+// 26 =>  Burglary Series (09): Filter Values
+// The insurance guy calls, the policy you chose doesn't cover values below 5000€, it wouldn't dignify your status you said at the time. Given an object with a list of the stolen items, return a copy of that list without the values below 5000.
+
+function filterValues(obj) {
+    let res = {};
+    let keys = Object.keys(obj);
+
+    for (let i = 0; i < keys.length; i++) {
+        let key = keys[i];
+        let value = obj[key];
+
+        if (value >= 5000) {
+            res[key] = value;
+        }
+    }
+
+    return res;
+}
+
+// console.log(filterValues({ tv: 4999, guitar: 5000, fork: 5001 }))// { guitar:5000, fork: 5001 }
+// console.log(filterValues({ tv: 4999 })); //  {}
+// console.log(filterValues({ guitar: 5000 })); //  { guitar: 5000 }
+// console.log(filterValues({})); //  {}
+
+// 27 => Characters and ASCII Code
+// Write a function that transforms an array of characters into an array of objects, where:
+
+// The keys are the characters themselves.
+// The values are the ASCII codes of those characters.
+
+function toObj(arr) {
+    let res = [];
+    let EObj = {}
+    for (let i = 0; i < arr.length; i++) {
+        let charCode = arr[i].charCodeAt();
+        EObj[arr[i]] = charCode;
+    }
+
+    res.push(EObj);
+
+    return res
+}
+
+// console.log(toObj(["a", "b", "c"])); // [{a: 97}, {b: 98}, {c: 99}]
+// console.log(toObj(["z"])); // [{z: 122}]
+// console.log(toObj([])); // []
+
+// 28 => Who's The Oldest?
+// Given an object containing the names and ages of a group of people, return the name of the  oldest person.
+
+function oldest(obj) {
+    let res = [];
+    let keys = Object.keys(obj);
+
+    for (let i = 0; i < keys.length; i++) {
+        let key = keys[i];
+        let value = obj[key];
+
+        if (value >= 48) {
+            res.push(key)
+        }
+    }
+
+    return res;
+
+}
+
+// console.log(oldest({    Emma: 71, Jack: 45, Amy: 15, Ben: 29 })) // "Emma"
+
+// console.log( oldest({Max: 9,Josh: 13,Sam: 48, Anne: 33 })) // ➞ "Sam"
+
+
+// 29 => Leaderboard Sort
+// Given an array of users, each defined by an object with the following properties: name, score, reputation create a function that sorts the array to form the correct leaderboard.
+
+// The leaderboard takes into consideration the score of each user of course, but an emphasis is put on their reputation in the community, so to get the trueScore, you should add the reputation multiplied by 2 to the score.
+
+// Once you know the trueScore of each user, sort the array according to it in descending order.
+
+function leaderboards(arr){
+    let res = [];
+    for(let i = arr.length-1; i>= 0 ; i--){
+res.push(arr[i]);
+    }
+    return res
+}
+
+// console.log(
+//     leaderboards([
+//   { name: "a", score: 100, reputation: 20 },
+//   { name: "b", score: 90, reputation: 40 },
+//   { name: "c", score: 115, reputation: 30 },
+// ]));    //➞ [
+//   { name: "c", score: 115, reputation: 30 },  // trueScore = 175
+//   { name: "b", score: 90, reputation: 40 },   // trueScore = 170
+//   { name: "a", score: 100, reputation: 20 }   // trueScore = 140
+// ]
