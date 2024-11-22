@@ -800,21 +800,23 @@ function oldest(obj) {
 
 // Once you know the trueScore of each user, sort the array according to it in descending order.
 
-function leaderboards(arr){
+function leaderboards(arr) {
     let res = [];
-    for(let i = arr.length-1; i>= 0 ; i--){
-res.push(arr[i]);
+    for (let i = arr.length - 1; i >= 0; i--) {
+        res.push(arr[i]);
     }
     return res
 }
 
-// console.log(
-//     leaderboards([
-//   { name: "a", score: 100, reputation: 20 },
-//   { name: "b", score: 90, reputation: 40 },
-//   { name: "c", score: 115, reputation: 30 },
-// ]));    //➞ [
+console.log(
+    leaderboards([
+  { name: "a", score: 100, reputation: 20 },
+  { name: "b", score: 90, reputation: 40 },
+  { name: "c", score: 115, reputation: 30 },
+]));    //➞ [
 //   { name: "c", score: 115, reputation: 30 },  // trueScore = 175
 //   { name: "b", score: 90, reputation: 40 },   // trueScore = 170
 //   { name: "a", score: 100, reputation: 20 }   // trueScore = 140
 // ]
+
+
